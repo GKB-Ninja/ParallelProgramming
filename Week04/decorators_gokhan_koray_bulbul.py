@@ -1,7 +1,7 @@
 import time
 import tracemalloc
 
-def performance_tracker(func):
+def performance(func):
     """
     A decorator that measures execution time and memory usage.
     Statistics are stored as attributes on the wrapper function.
