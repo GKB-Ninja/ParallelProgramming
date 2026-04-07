@@ -12,7 +12,7 @@ def custom_equation(x: float = 0, y: float = 0, /, a: float = 1, b: float = 1, *
     """
     return (custom_power(x, e = a) + custom_power(y, e = b)) / c
 
-def fn_w_counter(): -> (int, dict[str, int])
+def fn_w_counter() -> (int, dict[str, int]):
     if not hasattr(fn_w_counter, "counter"):
         fn_w_counter.counter = 0
         fn_w_counter.callers = {}
