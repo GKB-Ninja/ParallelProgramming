@@ -6,12 +6,14 @@ def performance(func):
     A decorator that measures execution time and memory usage.
     Statistics are stored as attributes on the wrapper function.
     """
-    # Initialize the required attributes on the wrapper function
-    _performance.counter = 0
-    _performance.total_time = 0.0
-    _performance.total_mem = 0
     
     def _performance(*args, **kwargs):
+
+        # Initialize the required attributes on the wrapper function
+        _performance.counter = 0
+        _performance.total_time = 0.0
+        _performance.total_mem = 0
+
         # 1. Increment the call counter
         _performance.counter += 1
         
