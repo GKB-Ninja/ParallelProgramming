@@ -1,6 +1,6 @@
 custom_power = lambda x = 0, /, e = 1: x ** e
 
-def custom_equation(x: float = 0, y: float = 0, /, a: float = 1, b: float = 1, *, c: float = 1) -> float:
+def custom_equation(x: int = 0, y: int = 0, /, a: int = 1, b: int = 1, *, c: int = 1) -> float:
     """This function returns a float value of the equation (x ** a + y ** b) / c
 
     :param x: The first term of the equation. Default is 0.
