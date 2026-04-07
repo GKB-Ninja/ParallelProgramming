@@ -6,9 +6,14 @@ def performance(func):
     A decorator that measures execution time and memory usage.
     Statistics are stored as attributes on the wrapper function.
     """
-    def wrapper(*args, **kwargs):
+    # Initialize the required attributes on the wrapper function
+    _performance.counter = 0
+    _performance.total_time = 0.0
+    _performance.total_mem = 0
+    
+    def _performance(*args, **kwargs):
         # 1. Increment the call counter
-        wrapper.counter += 1
+        _performance.counter += 1
         
         # 2. Start memory tracking
         tracemalloc.start()
@@ -21,18 +26,11 @@ def performance(func):
         
         # 4. Stop timer and calculate duration
         end_time = time.perf_counter()
-        wrapper.total_time += (end_time - start_time)
+        _performance.total_time += (end_time - start_time)
         
         # 5. Get memory stats (current, peak) and stop tracking
         _, peak = tracemalloc.get_traced_memory()
-        wrapper.total_mem += peak
+        _performance.total_mem += peak
         tracemalloc.stop()
-        
-        return result
-
-    # Initialize the required attributes on the wrapper function
-    wrapper.counter = 0
-    wrapper.total_time = 0.0
-    wrapper.total_mem = 0
     
-    return wrapper
+    return _performance
